@@ -44,12 +44,14 @@ function ContentBox({review}) {
 
 function ReviewView(props) {
     const {reviews, title} = props;
+    const naverUrl = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=';
     return (
-        <> 
+        <>
         <ReviewBtnStyle>
         <button>+</button>
         </ReviewBtnStyle>
         <p>{title}</p>
+        <span><a href={naverUrl+title} target="_blank">{title}</a></span> 
         <ReviewViewStyle>
         <div className={"row justify-content-center sample"}>
             {reviews.map((review) => {
