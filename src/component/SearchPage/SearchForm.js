@@ -132,7 +132,7 @@ function SearchForm() {
             <input type={"image"} src={GridIcon} className={"col-md-1 col-xs-1"} onClick={() => setViewBtnText('grid')}/>
             </ViewBtn>
         </div>
-       
+        <div></div>
         {ViewBtnText==='grid'?<GridView contents={Contents}/>:ViewBtnText==="list"?<ListView contents={Contents}/>:<MapView/>}
 
         <div id="filterTotalBox">
