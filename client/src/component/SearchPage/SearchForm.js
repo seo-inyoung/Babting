@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ListView from "./View/ListView"; //그리드 뷰, 리스트 뷰, 맵 뷰 컴포넌트
 import GridView from "./View/GridView";
 import MapView from "./View/MapView";
@@ -8,7 +8,6 @@ import MapIcon from "../img/maps.png";
 import styled from "styled-components"; //css 쓸 수 있게
 import Contents from "../../static_data/contents"; //맛집 data 정리 해놓은 파일
 import axios from "axios"; //axios
-import { useContext, createContext } from "react";
 
 //ViewBtn input 테두리 좀 더 다듬기 & 클릭하면 색깔 변하게
 //FilterBtn
@@ -166,9 +165,12 @@ const openfilter = () => {
 
 //실행
 let checkFilter = [];
-//const resultData = [];
-//const resultData = [];
-function SearchForm() {
+
+function SearchForm(props) {
+  const {restaurants} = props;
+  //console.log(restaurants);
+
+  
   const dataInput = useRef();
   const [data, setData] = useState({
     View: "map",

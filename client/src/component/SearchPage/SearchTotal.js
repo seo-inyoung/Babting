@@ -4,10 +4,12 @@ import ListView from "./View/ListView";
 import GridView from './View/GridView';
 import MapView from "./View/MapView";
 
-function SearchTotal () {
+function SearchTotal (props) {
+    const {restaurants} = props;
+    //console.log(restaurants);
     return (
         <>
-        <SearchForm/>
+        <SearchForm restaurants={restaurants}/>
         </>
     );
 }

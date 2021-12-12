@@ -4,7 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import axios from "axios";
+// useEffect(()=> {
+//   axios.get('/api')
+//   .then(res => console.log(res))
+//   .catch()
+// })
 ReactDOM.render(
+
   <React.StrictMode>
     <App />
   </React.StrictMode>,

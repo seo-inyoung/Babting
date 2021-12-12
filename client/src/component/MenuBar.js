@@ -12,7 +12,9 @@ const Logo = styled.div`
 }
 `; 
 
-function MenuBar() {
+function MenuBar(props) {
+    const {restaurants} = props;
+    //console.log(restaurants);
     const [view, setView] = useState(true);
     const MenuContainer = {
         margin:'30px 0',
@@ -53,7 +55,7 @@ function MenuBar() {
                 value="review">후기</button>
             </div>
         </div>
-        {view ? <SearchTotal/> : <ReviewTotal/>}
+        {view ? <SearchTotal restaurants = {restaurants}/> : <ReviewTotal/>}
         </>
     );
 }
