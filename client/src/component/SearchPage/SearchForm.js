@@ -171,12 +171,14 @@ function SearchForm(props) {
   useEffect(()=> {
     const box = document.getElementById('filterTotalBox');
     const checkFilterText = document.getElementById('filterLook');
+    let filterText ='';
     if(checkFilter.length !== 0){
       box.style.display = "none";
       checkFilter.map((f) => {
-        checkFilterText.innerText += f;
+        filterText += f + ',';
       })
     }
+    checkFilterText.innerText = filterText;
   })
   const {restaurants} = props;  
   const dataInput = useRef();

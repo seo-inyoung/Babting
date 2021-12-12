@@ -31,6 +31,7 @@ function ListView(props) {
 
   return (
     <div className={"row justify-content-center"}>
+      <div style={ContentBoxStyle} className="col-sm-11 col-md-8 contentBox"><p>음식점이름 주소 메인메뉴</p></div>
       {contents.map((content) => (
         <ContentBox content={content} key={content.id} />
       ))}
