@@ -31,7 +31,7 @@ function ReviewTotal () {
      <> 
      <FilterBtn>
         <div className={"row justify-content-center"}>
-            <input ref={titleInput} className={"col-md-4 col-xs-5"} />
+            <input ref={titleInput} className={"col-md-4 col-xs-5"} placeholder="후기가 궁금한 음식점을 검색해보세요."/>
             <button className={"col-md-1 col-xs-2"} onClick={onClick}>검색 </button>
         </div> 
      </FilterBtn>

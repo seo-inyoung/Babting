@@ -118,6 +118,7 @@ function FilterBtns({ filter }) {
   );
 }
 function FilterBoxTool() {
+  
   return (
     <FilterBox>
       <div className="filterBox">
@@ -167,6 +168,16 @@ const openfilter = () => {
 let checkFilter = [];
 
 function SearchForm(props) {
+  useEffect(()=> {
+    const box = document.getElementById('filterTotalBox');
+    const checkFilterText = document.getElementById('filterLook');
+    if(checkFilter.length !== 0){
+      box.style.display = "none";
+      checkFilter.map((f) => {
+        checkFilterText.innerText += f;
+      })
+    }
+  })
   const {restaurants} = props;  
   const dataInput = useRef();
   const [data, setData] = useState({

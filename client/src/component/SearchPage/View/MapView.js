@@ -31,7 +31,7 @@ const markerdata = [
 const MapViewStyle = styled.div`
   #map {
     width: 65%;
-    height: 500px;
+    height: 450px;
     margin: 0 auto;
   }
   @media screen and (max-width: 958px) {
