@@ -70,7 +70,7 @@ function Map({contents}) {
       
       });
       // allContent 변수를 선언해서 markerdata의 title,tag를 받아옴 맞나? ㅋㅋㅋㅋㅋ
-      var allContent = `<div><center><img src="이미지" alt="이미지"/><br/>${item.name}<br/>${item.address}<br/>${item.mainmenu}</center></div>`;
+      var allContent = `<div><center><img src="이미지" alt="이미지"/><br/>${item.name}<br/>${item.adress}<br/>${item.mainmenu}</center></div>`;
       // infowindow 선언 content:allContent로 다 띄울 수 있을 듯?
       var infowindow = new window.kakao.maps.InfoWindow({
         content: allContent
@@ -106,8 +106,8 @@ function Map({contents}) {
     }
   };
 
-  return <div id="map"></div>;
-}
+  return <div id="map"></div> 
+} 
 //아니 왜 안됨? 진짜..
 function MapView(props) {
   const {contents, Data} = props;

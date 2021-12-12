@@ -183,6 +183,7 @@ function SearchForm(props) {
       })
     }
     checkFilterText.innerText = filterText;
+    //searchData();
   })
   const {restaurants} = props;  
   const dataInput = useRef();
@@ -195,10 +196,12 @@ function SearchForm(props) {
     const dataInfo = dataInput.current;
     resultData = [];
     restaurants.map((content) => {
-      if (
-        dataInfo.value == content.name ||
-        dataInfo.value == content.adress ||
-        dataInfo.value == content.mainmenu
+      if (content.name.includes(dataInfo.value)||
+          content.adress.includes(dataInfo.value)||
+          content.mainmenu.includes(dataInfo.value)
+      //dataInfo.value == content.name ||
+      //dataInfo.value == content.adress ||
+      //dataInfo.value == content.mainmenu
       ) {
         resultData.push(content);
       } else if (dataInfo.value === "") {
@@ -251,9 +254,9 @@ function SearchForm(props) {
         <span id="filterLook"></span>
       </div>
       {data.View === "grid" ? (
-        <GridView contents={data.result} Data={data.ResultWord} />
+        <GridView contents={dataInput.current.value==""?restaurants:data.result} Data={data.ResultWord} />
       ) : data.View === "list" ? (
-        <ListView contents={data.result} Data={data.ResultWord} />
+        <ListView contents={dataInput.current.value==""?restaurants:data.result} Data={data.ResultWord} />
       ) : (
         <MapView contents={data.result} Data={data.ResultWord} />
       )}

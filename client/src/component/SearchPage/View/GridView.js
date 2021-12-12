@@ -26,7 +26,7 @@ function ContentBox({ content }) {
     <div style={ContentBoxStyle}>
       <p>{content.img}</p>
       <p>{content.name}</p>
-      <p>{content.address}</p>
+      <p>{content.adress}</p>
       <p>{content.mainmenu}</p>
     </div>
   );
