@@ -27,13 +27,17 @@ const preference = [
 //style
 const FilterBox = styled.div`
   .filterBox {
-    border: 1px solid black;
     width: 50%;
     position: fixed;
     background: white;
+    border-radius:15px;
     top: 25%;
     left: 25%;
     z-index: 1;
+  }
+  .filterTitle {
+    padding:15px 0;
+    border-bottom: 2px solid red;
   }
   .offbtn {
     background: white;
@@ -122,8 +126,8 @@ function FilterBoxTool() {
   return (
     <FilterBox>
       <div className="filterBox">
-        <br />
-        <p>필터 설정</p>
+        
+        <p className="filterTitle">필터 설정</p>
         <p>취향 필터</p>
         {preference.map((filter) => (
           <FilterBtns filter={filter} />

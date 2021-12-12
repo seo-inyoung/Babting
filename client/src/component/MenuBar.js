@@ -20,22 +20,27 @@ function MenuBar(props) {
         margin:'30px 0',
     }
     const SelectBtn = {
-        backgroundColor: "yellow",
-        border: '1px solid black',
-        borderRadius: '7px',
+        backgroundColor: "white",
+        border:"none",
+        borderBottom: '2px solid red',
+        //borderRadius: '7px',
         marginLeft: "10px",
         width: "70px",
         transition: "1s",
+        outline: "none"
         
     }
 
     const nonSelectBtn = {
         backgroundColor: "white",
-        border: '1px solid black',
-        borderRadius: '7px',
+        //border: '1px solid black',
+        //borderRadius: '7px',
+        border:"none",
+        borderBottom: '2px solid white',
         marginLeft: "10px",
         width: "70px",
-        transition: "0.5s"
+        transition: "0.5s",
+        outline:"none"
     }
     const border = {
         border: '1px solid black'
