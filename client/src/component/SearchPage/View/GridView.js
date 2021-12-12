@@ -24,16 +24,16 @@ const ContentBoxStyle = {
 function ContentBox({ content }) {
   return (
     <div style={ContentBoxStyle}>
-      <p>{content.id}</p>
       <p>{content.img}</p>
-      <p>{content.title}</p>
-      <p>{content.introduce}</p>
+      <p>{content.name}</p>
+      <p>{content.address}</p>
+      <p>{content.mainmenu}</p>
     </div>
   );
 }
 //속성으로 받아오는 contents는 contents.js에 있음.
 function GridView(props) {
-  const { contents } = props;
+  const { contents, Data } = props;
   return (
     <GridViewStyle>
       <div className={"row justify-content-center sample"}>

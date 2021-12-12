@@ -5,28 +5,28 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
-const markerdata = [
-  {
-    title: "클럽에반스",
-    lat: 37.55033897015321,
-    lng: 126.9229336137093,
-  },
-  {
-    title: "치차티클럽",
-    lat: 37.57109940534566,
-    lng: 127.01135026952784,
-  },
-  {
-    title: "TRVR Cafe",
-    lat: 37.53838839800507,
-    lng: 126.99353635603627,
-  },
-  {
-    title: "용용선생",
-    lat: 37.55939806463767,
-    lng: 127.03980732534552,
-  },
-];
+// const markerdata = [
+//   {
+//     title: "클럽에반스",
+//     lat: 37.55033897015321,
+//     lng: 126.9229336137093,
+//   },
+//   {
+//     title: "치차티클럽",
+//     lat: 37.57109940534566,
+//     lng: 127.01135026952784,
+//   },
+//   {
+//     title: "TRVR Cafe",
+//     lat: 37.53838839800507,
+//     lng: 126.99353635603627,
+//   },
+//   {
+//     title: "용용선생",
+//     lat: 37.55939806463767,
+//     lng: 127.03980732534552,
+//   },
+// ];
 
 const MapViewStyle = styled.div`
   #map {
@@ -41,12 +41,12 @@ const MapViewStyle = styled.div`
   }
 `;
 
-function Map() {
+function Map({contents}) {
   useEffect(() => {
-    mapscript();
+    mapscript(contents);
   }, []);
 
-  const mapscript = () => {
+  const mapscript = (contents) => {
     let container = document.getElementById("map");
     let options = {
       center: new window.kakao.maps.LatLng(
@@ -59,18 +59,18 @@ function Map() {
     //map
     const map = new window.kakao.maps.Map(container, options);
 
-    markerdata.map((item) => {
+    contents.map((item) => {
       // 마커를 생성합니다
-      
+      console.log(item)
       const marker = new window.kakao.maps.Marker({
         //마커가 표시 될 지도
         map: map,
         //마커가 표시 될 위치
-        position: new window.kakao.maps.LatLng(item.lat, item.lng),
+        position: new window.kakao.maps.LatLng(item.wedo, item.gyungdo),
       
       });
       // allContent 변수를 선언해서 markerdata의 title,tag를 받아옴 맞나? ㅋㅋㅋㅋㅋ
-      var allContent = `<div><center><img src="이미지" alt="이미지"/><br/>${item.title}<br/>${item.lat}<br/>${item.lng}</center></div>`;
+      var allContent = `<div><center><img src="이미지" alt="이미지"/><br/>${item.name}<br/>${item.address}<br/>${item.mainmenu}</center></div>`;
       // infowindow 선언 content:allContent로 다 띄울 수 있을 듯?
       var infowindow = new window.kakao.maps.InfoWindow({
         content: allContent
@@ -109,11 +109,12 @@ function Map() {
   return <div id="map"></div>;
 }
 //아니 왜 안됨? 진짜..
-function MapView() {
+function MapView(props) {
+  const {contents, Data} = props;
   return (
     <center>
       <MapViewStyle>
-        <Map />
+        <Map contents={contents} />
       </MapViewStyle>
     </center>
   );
