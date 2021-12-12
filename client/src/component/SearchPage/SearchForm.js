@@ -167,10 +167,7 @@ const openfilter = () => {
 let checkFilter = [];
 
 function SearchForm(props) {
-  const {restaurants} = props;
-  //console.log(restaurants);
-
-  
+  const {restaurants} = props;  
   const dataInput = useRef();
   const [data, setData] = useState({
     View: "map",
@@ -180,10 +177,11 @@ function SearchForm(props) {
   const searchData = () => {
     const dataInfo = dataInput.current;
     resultData = [];
-    Contents.map((content) => {
+    restaurants.map((content) => {
       if (
-        dataInfo.value == content.title ||
-        dataInfo.value == content.address
+        dataInfo.value == content.name ||
+        dataInfo.value == content.adress ||
+        dataInfo.value == content.mainmenu
       ) {
         resultData.push(content);
       } else if (dataInfo.value === "") {

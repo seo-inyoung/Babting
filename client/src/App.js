@@ -12,7 +12,7 @@ function App() {
      async() => {
        try{
        const result = await axios.get("/restaurant");
-       rule = JSON.stringify(result.data); //Array.from(JSON.stringify(result.data))
+       rule = result.data; //Array.from(JSON.stringify(result.data))
       setRestaurants(rule);
       }
        catch(e) { console.error(e.message);}

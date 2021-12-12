@@ -16,17 +16,17 @@ const ContentBoxStyle = {
   //margin : '0 auto'
 };
 function ContentBox({ content }) {
-  console.log(content);
+  //console.log(content);
   return (
     <div style={ContentBoxStyle} className="col-sm-11 col-md-8 contentBox">
       <p>
-        {content.id} {content.title} {content.introduce}
+        {content.name} {content.adress} {content.mainmenu}
       </p>
     </div>
   );
 }
 function ListView(props) {
-  console.log(props);
+  //console.log(props);
   const { contents, Data } = props;
 
   return (
