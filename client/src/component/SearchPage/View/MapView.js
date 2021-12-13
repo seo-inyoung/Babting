@@ -61,7 +61,7 @@ function Map({contents}) {
 
     contents.map((item) => {
       // 마커를 생성합니다
-      console.log(item)
+      //console.log(item)
       const marker = new window.kakao.maps.Marker({
         //마커가 표시 될 지도
         map: map,
