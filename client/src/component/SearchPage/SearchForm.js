@@ -184,7 +184,7 @@ function SearchForm(props) {
     }
     checkFilterText.innerText = filterText;
     //searchData();
-  })
+  },[]);
   const {restaurants} = props;  
   const dataInput = useRef();
   const [data, setData] = useState({
