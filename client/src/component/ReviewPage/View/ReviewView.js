@@ -1,5 +1,6 @@
-import React, {useRef,useState} from "react";
+import React, {useEffect, useRef,useState} from "react";
 import styled from 'styled-components';
+import axios from 'axios';
 
 const ReviewViewStyle = styled.div`
 .sample {
@@ -23,17 +24,28 @@ const ContentBoxStyle = {
 function ContentBox({review}) {
     return (        
         <div style={ContentBoxStyle}>
-            <p>{review.id}</p>
-            <p>{review.img}</p>
-            <p>{review.title}</p>
-            <p>{review.introduce}</p>
+            <p>{review.식당이름}</p>
+            <p>{review.제목}</p>
+            <p>{review.내용}</p>
+            <p>{review.이미지.data}</p>
         </div>
         
     );
 }
-
+let role = [];
 function ReviewView(props) {
-    const {reviews, title} = props;
+    const [reviews, setReviews] = useState([]);
+    useEffect(
+        async() => {
+            try{
+                const review = await axios.get("/review");
+                role = review.data;
+                console.log(role);
+                setReviews(role);
+            }catch(e){console.log(e.message);}
+        },[]
+    )
+    const {title} = props; //const {title} = props;
     const naverUrl = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=';
     return (
         <>
@@ -42,7 +54,7 @@ function ReviewView(props) {
         <ReviewViewStyle>
         <div className={"row justify-content-center sample"}>
             {reviews.map((review) => {
-               if(title==review.title||title==''){return <ContentBox review={review} key = {review.id}/>}
+               if(review.식당이름.includes(title)||title==''){return <ContentBox review={review} key = {review.id}/>}
             })}
         </div>
         </ReviewViewStyle>

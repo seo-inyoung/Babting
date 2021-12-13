@@ -4,29 +4,7 @@
 //https://apis.map.kakao.com/web/sample/addMapCenterChangedEvent/ LatLng이랑 level 알아 올 수 있음
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-
-// const markerdata = [
-//   {
-//     title: "클럽에반스",
-//     lat: 37.55033897015321,
-//     lng: 126.9229336137093,
-//   },
-//   {
-//     title: "치차티클럽",
-//     lat: 37.57109940534566,
-//     lng: 127.01135026952784,
-//   },
-//   {
-//     title: "TRVR Cafe",
-//     lat: 37.53838839800507,
-//     lng: 126.99353635603627,
-//   },
-//   {
-//     title: "용용선생",
-//     lat: 37.55939806463767,
-//     lng: 127.03980732534552,
-//   },
-// ];
+import {createContext} from 'react';
 
 const MapViewStyle = styled.div`
   #map {
@@ -45,7 +23,6 @@ function Map({contents}) {
    useEffect(() => {
      mapscript(contents);
    },[]);
-  
   const mapscript = (contents) => {
     let container = document.getElementById("map");
     let options = {
