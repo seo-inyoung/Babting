@@ -15,7 +15,7 @@ function App() {
        rule = result.data; //Array.from(JSON.stringify(result.data))
       setRestaurants(rule);
       }
-       catch(e) { console.error(e.message);}
+       catch(e) { console.log(e.message);}
      }
    )
   // componentDidMount() {

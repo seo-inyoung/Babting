@@ -4,29 +4,7 @@
 //https://apis.map.kakao.com/web/sample/addMapCenterChangedEvent/ LatLng이랑 level 알아 올 수 있음
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-
-// const markerdata = [
-//   {
-//     title: "클럽에반스",
-//     lat: 37.55033897015321,
-//     lng: 126.9229336137093,
-//   },
-//   {
-//     title: "치차티클럽",
-//     lat: 37.57109940534566,
-//     lng: 127.01135026952784,
-//   },
-//   {
-//     title: "TRVR Cafe",
-//     lat: 37.53838839800507,
-//     lng: 126.99353635603627,
-//   },
-//   {
-//     title: "용용선생",
-//     lat: 37.55939806463767,
-//     lng: 127.03980732534552,
-//   },
-// ];
+import {createContext} from 'react';
 
 const MapViewStyle = styled.div`
   #map {
@@ -42,10 +20,9 @@ const MapViewStyle = styled.div`
 `;
 
 function Map({contents}) {
-  useEffect(() => {
-    mapscript(contents);
-  });
-
+   useEffect(() => {
+     mapscript(contents);
+   },[]);
   const mapscript = (contents) => {
     let container = document.getElementById("map");
     let options = {
@@ -53,7 +30,7 @@ function Map({contents}) {
         37.56284927225243,
         126.97138694483239
       ),
-      level: 8,
+      level: 8
     };
 
     //map
@@ -61,16 +38,16 @@ function Map({contents}) {
 
     contents.map((item) => {
       // 마커를 생성합니다
-      console.log(item)
+      //console.log(item)
       const marker = new window.kakao.maps.Marker({
         //마커가 표시 될 지도
         map: map,
         //마커가 표시 될 위치
-        position: new window.kakao.maps.LatLng(item.wedo, item.gyungdo),
+        position: new window.kakao.maps.LatLng(item.위도, item.경도),
       
       });
       // allContent 변수를 선언해서 markerdata의 title,tag를 받아옴 맞나? ㅋㅋㅋㅋㅋ
-      var allContent = `<div><center><img src="이미지" alt="이미지"/><br/>${item.name}<br/>${item.adress}<br/>${item.mainmenu}</center></div>`;
+      var allContent = `<div><center><br/>${item.이름}<br/>${item.주소}<br/>${item.대표음식}</center></div>`;
       // infowindow 선언 content:allContent로 다 띄울 수 있을 듯?
       var infowindow = new window.kakao.maps.InfoWindow({
         content: allContent

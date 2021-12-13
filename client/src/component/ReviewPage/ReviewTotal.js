@@ -1,41 +1,30 @@
-import React, {useRef,useState} from "react";
+import React, {useRef,useState,createContext} from "react";
 import styled from 'styled-components';
 import ReviewView from "./View/ReviewView";
-import Reviews from "../../static_data/review";
-
-const FilterBtn = styled.div `
-input {
-    border: 1px solid #eeeeee;
-    border-radius: 30px;
-    outline:none;
-}
-button {
-    width:70px;
-}
-@media screen and (max-width:958px ) {
-    input {
-        width: 400px;
-    }
+import ReviewRead from "./View/ReviewRead";
+import ReviewWrite from "./View/RiviewWrite";
+const ModeSet = React.createContext(true);
+//리뷰 읽기/쓰기 모드 왔다 갔다 할 수 있는 버튼
+const ReviewBtnStyle = styled.div`
+button{
+    background-color : white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
 }
 `;
 function ReviewTotal () {
-    const [text, setText] = useState('');
-    const titleInput = useRef();
-    const onClick = () => {
-        const title = titleInput.current;
-        setText(title.value);
+    const [mode, setMode] = useState(true);
+    const ReviewModeChange = () => {
+        mode?setMode(false):setMode(true)
     }
-
-
  return(
      <> 
-     <FilterBtn>
-        <div className={"row justify-content-center"}>
-            <input ref={titleInput} className={"col-md-4 col-xs-5"} placeholder="후기가 궁금한 음식점을 검색해보세요."/>
-            <button className={"col-md-1 col-xs-2"} onClick={onClick}>검색 </button>
-        </div> 
-     </FilterBtn>
-        <ReviewView reviews={Reviews} title={text}></ReviewView>
+        <ReviewBtnStyle>
+            <button onClick={ReviewModeChange}>+</button>
+        </ReviewBtnStyle>
+        {mode?<ReviewRead/>:<ReviewWrite/>}
      </>
  );
 }

@@ -9,7 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const Restaurant = require("./models/Restaurant");
+const Review = require("./models/Review");
+
 const router = require("./routes/router")(app, Restaurant);
+const reivewrouter = require("./routes/reviewrouter")(app, Review);
 
 app.listen(port, function () {
   console.log("Express server has started on port " + port);
