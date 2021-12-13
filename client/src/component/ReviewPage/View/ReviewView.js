@@ -1,15 +1,5 @@
-import React from "react";
+import React, {useRef,useState} from "react";
 import styled from 'styled-components';
-
-const ReviewBtnStyle = styled.div`
-button{
-background-color : white;
-border-radius: 50%;
-width: 50px;
-height: 50px;
-font-size: 30px;
-}
-`;
 
 const ReviewViewStyle = styled.div`
 .sample {
@@ -47,9 +37,6 @@ function ReviewView(props) {
     const naverUrl = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=';
     return (
         <>
-        <ReviewBtnStyle>
-        <button>+</button>
-        </ReviewBtnStyle>
         <p>{title}</p>
         <span><a href={naverUrl+title} target="_blank">{title}</a></span> 
         <ReviewViewStyle>
