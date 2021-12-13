@@ -1,13 +1,13 @@
 @font-face {
   font-family: "NotosansKR";
-  src: url("./static_data/font/NotoSansKR-Regular.otf")
+  src: url("./static_data/font/NotoSansKR-Regular.otf");
 }
 @font-face {
   font-family: "NanumGothic";
-  src: url("./static_data/font/NanumGothic-Bold.ttf")
+  src: url("./static_data/font/NanumGothic-Bold.ttf");
 }
 * {
-  font-family : "NotosansKR";
+  font-family: "NotosansKR";
 }
 .App {
   text-align: center;

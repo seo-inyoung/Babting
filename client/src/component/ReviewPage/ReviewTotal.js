@@ -1,5 +1,5 @@
-import React, {useRef,useState} from "react";
-import styled from 'styled-components';
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
 import ReviewView from "./View/ReviewView";
 
 import ReviewRead from "./View/ReviewRead";
@@ -7,27 +7,27 @@ import ReviewWrite from "./View/RiviewWrite";
 
 //리뷰 읽기/쓰기 모드 왔다 갔다 할 수 있는 버튼
 const ReviewBtnStyle = styled.div`
-button{
-    background-color : white;
+  button {
+    background-color: white;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     font-size: 30px;
-}
+  }
 `;
-function ReviewTotal () {
-    const [mode, setMode] = useState(true);
-    const ReviewModeChange = () => {
-        mode?setMode(false):setMode(true)
-    }
- return(
-     <> 
-        <ReviewBtnStyle>
-            <button onClick={ReviewModeChange}>+</button>
-        </ReviewBtnStyle>
-        {mode?<ReviewRead/>:<ReviewWrite/>}
-     </>
- );
+function ReviewTotal() {
+  const [mode, setMode] = useState(true);
+  const ReviewModeChange = () => {
+    mode ? setMode(false) : setMode(true);
+  };
+  return (
+    <>
+      <ReviewBtnStyle>
+        <button onClick={ReviewModeChange}>+</button>
+      </ReviewBtnStyle>
+      {mode ? <ReviewRead /> : <ReviewWrite />}
+    </>
+  );
 }
 
 export default ReviewTotal;

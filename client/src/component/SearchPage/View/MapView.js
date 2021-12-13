@@ -41,10 +41,10 @@ const MapViewStyle = styled.div`
   }
 `;
 
-function Map({contents}) {
+function Map({ contents }) {
   useEffect(() => {
     mapscript(contents);
-  },[]);
+  }, []);
 
   const mapscript = (contents) => {
     let container = document.getElementById("map");
@@ -67,23 +67,21 @@ function Map({contents}) {
         map: map,
         //마커가 표시 될 위치
         position: new window.kakao.maps.LatLng(item.위도, item.경도),
-      
       });
       // allContent 변수를 선언해서 markerdata의 title,tag를 받아옴 맞나? ㅋㅋㅋㅋㅋ
       var allContent = `<div><center><img src="이미지" alt="이미지"/><br/>${item.이름}<br/>${item.주소}<br/>${item.대표음식}</center></div>`;
       // infowindow 선언 content:allContent로 다 띄울 수 있을 듯?
       var infowindow = new window.kakao.maps.InfoWindow({
-        content: allContent
+        content: allContent,
       });
-      
+
       //마커에 mouseover, mouseout 이벤트를 등록함
       // 이벤트리스너로 클로저를 만들어줌
       // 안만들어주면 마지막 마커에만 이벤트 등록됨 ㅇㅇ
       window.kakao.maps.event.addListener(
         marker,
         "mouseover",
-        makeOverListener(map,marker, infowindow)
-
+        makeOverListener(map, marker, infowindow)
       );
       window.kakao.maps.event.addListener(
         marker,
@@ -93,7 +91,7 @@ function Map({contents}) {
     });
     // 인포윈도우를 표시하는 클로저를 만드는 함수
     function makeOverListener(map, marker, infowindow) {
-      return function() {
+      return function () {
         infowindow.open(map, marker);
       };
     }
@@ -106,11 +104,11 @@ function Map({contents}) {
     }
   };
 
-  return <div id="map"></div> 
-} 
+  return <div id="map"></div>;
+}
 //아니 왜 안됨? 진짜..
 function MapView(props) {
-  const {contents, Data} = props;
+  const { contents, Data } = props;
   return (
     <center>
       <MapViewStyle>
