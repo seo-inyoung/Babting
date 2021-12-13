@@ -101,12 +101,12 @@ function FilterBtns({ filter }) {
     const btn = document.getElementById(`btn-${filter}`);
     if (FilterList[btn.id] === 0) {
       FilterList = { ...FilterList, [btn.id]: 1 };
-      console.log(FilterList);
+      //console.log(FilterList);
       btn.className = "onbtn";
       //btn.style.background = "gray";
     } else {
       FilterList = { ...FilterList, [btn.id]: 0 };
-      console.log(FilterList);
+      //console.log(FilterList);
       btn.className = "offbtn";
       //btn.style.background = "white";
     }
@@ -121,8 +121,8 @@ function FilterBtns({ filter }) {
     </button>
   );
 }
-function FilterBoxTool() {
-  
+function FilterBoxTool(props) {
+  const {restaurants} = props;  
   return (
     <FilterBox>
       <div className="filterBox">
@@ -140,7 +140,7 @@ function FilterBoxTool() {
         ))}
         <br />
         <br />{" "}
-        <button id={"closeBtn"} onClick={closefilter}>
+        <button id={"closeBtn"} onClick={()=>closefilter(restaurants)}>
           Check
         </button>
         <br />
@@ -151,8 +151,9 @@ function FilterBoxTool() {
 }
 
 //태그 창 열고 닫는 거
-const closefilter = () => {
+const closefilter = (props) => {
   checkFilter = [];
+  //isTagData = [];
   const filterbox = document.getElementById("filterTotalBox");
   filterbox.style.display = "none";
   for (const key in FilterList) {
@@ -162,7 +163,25 @@ const closefilter = () => {
   }
   const filterlook = document.getElementById("filterLook");
   filterlook.innerText = checkFilter;
-};
+  
+  // if(checkFilter.length!==0){
+  //   props.map((content) => {
+  //     for(var i in checkFilter){
+  //       if(content.태그!=undefined){
+  //         if(content.태그.includes(checkFilter[i])){
+  //           if(!isTagData.includes(content)){
+  //             isTagData.push(content);
+  //           }              
+  //         }
+  //       }
+  //     }
+  //   })
+  // }else{
+  //   props.map((content) => {
+  //     isTagData.push(content);
+  //   })
+  // }  
+  };
 const openfilter = () => {
   const filterbox = document.getElementById("filterTotalBox");
   filterbox.style.display = "block";
@@ -170,7 +189,7 @@ const openfilter = () => {
 
 //실행
 let checkFilter = [];
-
+let isTagData = [];
 function SearchForm(props) {
   useEffect(()=> {
     const box = document.getElementById('filterTotalBox');
@@ -195,18 +214,41 @@ function SearchForm(props) {
   const searchData = () => {
     const dataInfo = dataInput.current;
     resultData = [];
-    restaurants.map((content) => {
+    isTagData = [];
+    if(checkFilter.length!==0){
+      restaurants.map((content) => {
+        for(var i in checkFilter){
+          if(content.태그!=undefined){
+            if(content.태그.includes(checkFilter[i])){
+              if(!isTagData.includes(content)){
+                isTagData.push(content);
+              }              
+            }
+          }
+        }
+      })
+    }else{
+      restaurants.map((content) => {
+        isTagData.push(content);
+      })
+    }
+    isTagData.map((content) => {
       if (content.이름.includes(dataInfo.value)||
           content.주소.includes(dataInfo.value)||
-          content.대표음식.includes(dataInfo.value)
+          content.대표음식.includes(dataInfo.value)||
+          content.간단한설명.includes(dataInfo.value)
       //dataInfo.value == content.name ||
       //dataInfo.value == content.adress ||
       //dataInfo.value == content.mainmenu
       ) {
         resultData.push(content);
-      } else if (dataInfo.value === "") {
+      } 
+      else if(dataInfo.value==""){
         resultData.push(content);
-      }
+      } 
+      // else if (dataInfo.value === ""&&checkFilter.length==0) {
+      //   resultData.push(content);
+      // }
     });
     setData({ ...data, result: resultData });
   };
@@ -254,16 +296,16 @@ function SearchForm(props) {
         <span id="filterLook"></span>
       </div>
       {data.View === "grid" ? (
-        <GridView contents={dataInput.current.value==""?restaurants:data.result} Data={data.ResultWord} />
+        <GridView contents={data.result} Data={data.ResultWord} />
       ) : data.View === "list" ? (
-        <ListView contents={dataInput.current.value==""?restaurants:data.result} Data={data.ResultWord} />
+        <ListView contents={data.result} Data={data.ResultWord} />
       ) : (
         <MapView contents={data.result} Data={data.ResultWord} />
       )}
 
       <div id="filterTotalBox">
         <center>
-          <FilterBoxTool />
+          <FilterBoxTool restaurants={restaurants}/>
         </center>
       </div>
     </>

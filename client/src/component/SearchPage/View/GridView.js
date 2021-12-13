@@ -28,6 +28,7 @@ function ContentBox({ content }) {
       <p>{content.이름}</p>
       <p>{content.주소}</p>
       <p>{content.대표음식}</p>
+      <p>{content.간단한설명}</p>
     </div>
   );
 }

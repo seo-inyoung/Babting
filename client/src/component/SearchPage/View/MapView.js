@@ -42,10 +42,10 @@ const MapViewStyle = styled.div`
 `;
 
 function Map({contents}) {
-  useEffect(() => {
-    mapscript(contents);
-  },[]);
-
+   useEffect(() => {
+     mapscript(contents);
+   },[]);
+  
   const mapscript = (contents) => {
     let container = document.getElementById("map");
     let options = {
@@ -53,7 +53,7 @@ function Map({contents}) {
         37.56284927225243,
         126.97138694483239
       ),
-      level: 8,
+      level: 8
     };
 
     //map
@@ -70,7 +70,7 @@ function Map({contents}) {
       
       });
       // allContent 변수를 선언해서 markerdata의 title,tag를 받아옴 맞나? ㅋㅋㅋㅋㅋ
-      var allContent = `<div><center><img src="이미지" alt="이미지"/><br/>${item.이름}<br/>${item.주소}<br/>${item.대표음식}</center></div>`;
+      var allContent = `<div><center><br/>${item.이름}<br/>${item.주소}<br/>${item.대표음식}</center></div>`;
       // infowindow 선언 content:allContent로 다 띄울 수 있을 듯?
       var infowindow = new window.kakao.maps.InfoWindow({
         content: allContent

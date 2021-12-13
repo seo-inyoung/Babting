@@ -17,10 +17,11 @@ const ContentBoxStyle = {
 };
 function ContentBox({ content }) {
   //console.log(content);
+  //
   return (
     <div style={ContentBoxStyle} className="col-sm-11 col-md-8 contentBox">
       <p>
-        {content.이름} {content.주소} {content.대표음식}
+      {content.이름} {content.주소} {content.대표음식} {content.간단한설명}{content.태그}
       </p>
     </div>
   );
