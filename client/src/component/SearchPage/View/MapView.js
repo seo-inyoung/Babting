@@ -44,7 +44,7 @@ const MapViewStyle = styled.div`
 function Map({contents}) {
   useEffect(() => {
     mapscript(contents);
-  }, []);
+  });
 
   const mapscript = (contents) => {
     let container = document.getElementById("map");
