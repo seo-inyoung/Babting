@@ -196,9 +196,9 @@ function SearchForm(props) {
     const dataInfo = dataInput.current;
     resultData = [];
     restaurants.map((content) => {
-      if (content.name.includes(dataInfo.value)||
-          content.adress.includes(dataInfo.value)||
-          content.mainmenu.includes(dataInfo.value)
+      if (content.이름.includes(dataInfo.value)||
+          content.주소.includes(dataInfo.value)||
+          content.대표음식.includes(dataInfo.value)
       //dataInfo.value == content.name ||
       //dataInfo.value == content.adress ||
       //dataInfo.value == content.mainmenu

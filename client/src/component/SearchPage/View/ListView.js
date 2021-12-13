@@ -20,7 +20,7 @@ function ContentBox({ content }) {
   return (
     <div style={ContentBoxStyle} className="col-sm-11 col-md-8 contentBox">
       <p>
-        {content.name} {content.adress} {content.mainmenu}
+        {content.이름} {content.주소} {content.대표음식}
       </p>
     </div>
   );
