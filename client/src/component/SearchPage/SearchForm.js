@@ -163,24 +163,6 @@ const closefilter = (props) => {
   }
   const filterlook = document.getElementById("filterLook");
   filterlook.innerText = checkFilter;
-  
-  // if(checkFilter.length!==0){
-  //   props.map((content) => {
-  //     for(var i in checkFilter){
-  //       if(content.태그!=undefined){
-  //         if(content.태그.includes(checkFilter[i])){
-  //           if(!isTagData.includes(content)){
-  //             isTagData.push(content);
-  //           }              
-  //         }
-  //       }
-  //     }
-  //   })
-  // }else{
-  //   props.map((content) => {
-  //     isTagData.push(content);
-  //   })
-  // }  
   };
 const openfilter = () => {
   const filterbox = document.getElementById("filterTotalBox");

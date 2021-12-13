@@ -22,7 +22,7 @@ const MapViewStyle = styled.div`
 function Map({contents}) {
    useEffect(() => {
      mapscript(contents);
-   },[]);
+   },[contents]);
   const mapscript = (contents) => {
     let container = document.getElementById("map");
     let options = {
@@ -32,7 +32,7 @@ function Map({contents}) {
       ),
       level: 8
     };
-
+    console.log('함수실행');
     //map
     const map = new window.kakao.maps.Map(container, options);
 
