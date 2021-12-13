@@ -1,5 +1,6 @@
 import React, {useEffect, useRef,useState} from "react";
 import styled from 'styled-components';
+import axios from "axios";
 
 //stlye format
 // const ReviewBtnStyle = styled.div`
@@ -32,24 +33,39 @@ textarea{
 }
 `;
 function ReviewWrite() {
-    useEffect(()=>{})
     const setThumbnail=(event)=> {
         var reader = new FileReader();
             reader.onload = function(event){
             const imageContainer = document.getElementById('img-container'); 
             var img = document.createElement("img");
             img.setAttribute("src",event.target.result);
-            console.log("success");
             imageContainer.innerHTML = '';
             imageContainer.appendChild(img);
         };
     
     reader.readAsDataURL(event.target.files[0]);
     }
+    const saveReview = () => {
+        const send = async() => {
+            try{
+                const result = await axios.post('/review', {
+                    제목:'ㄱㄱ',
+                    식당이름:'ㅇㅇㅇ',
+                    내용:'전밋',
+                    이미지:'dd'
+                });
+            }catch(e) {
+                console.log(e.message);
+            }
+        }
+        send();
+    }
+    //<form method="post" encType = "" action=""> </form>
+    //<input type="submit" className="btn-primary pull-right" value="후기 저장"/>
     return(
         <center>
         <RiviewForm>
-        <form method="post" encType = "" action="">
+        
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -76,8 +92,9 @@ function ReviewWrite() {
                 </tr>
             </tbody>
             </table>
-                <input type="submit" className="btn-primary pull-right" value="후기 저장"/>
-    </form>
+                <button onClick={saveReview}>후기 저장</button>
+                
+    
     </RiviewForm>
     </center>
     );

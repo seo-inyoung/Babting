@@ -1,6 +1,7 @@
 module.exports = function (app, Review) {
   //새로운 식당 만들기
   app.post("/review", function (req, res) {
+    console.log('hello');
     let review = new Review();
     review.제목 = req.body.제목;
     review.식당이름 = req.body.식당이름;
