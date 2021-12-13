@@ -44,7 +44,7 @@ const MapViewStyle = styled.div`
 function Map({contents}) {
   useEffect(() => {
     mapscript(contents);
-  });
+  },[]);
 
   const mapscript = (contents) => {
     let container = document.getElementById("map");
@@ -73,7 +73,7 @@ function Map({contents}) {
       var allContent = `<div><center><img src="이미지" alt="이미지"/><br/>${item.이름}<br/>${item.주소}<br/>${item.대표음식}</center></div>`;
       // infowindow 선언 content:allContent로 다 띄울 수 있을 듯?
       var infowindow = new window.kakao.maps.InfoWindow({
-        content: "hello"//allContent
+        content: allContent
       });
       
       //마커에 mouseover, mouseout 이벤트를 등록함
