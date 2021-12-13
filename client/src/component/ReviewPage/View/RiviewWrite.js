@@ -67,12 +67,12 @@ function ReviewWrite() {
             
                 <tr>
                     <td><textarea className="form-control" placeholder="글 내용" name="bbsContent" maxLength="2048"></textarea>
-                        <div id ={"image-container"} className="thumbnail" ></div>
+                        <div id ={"img-container"} className="thumbnail" ></div>
                     </td>
                     
                 </tr>
                 <tr>
-                    <td><input type="file" name="fileName" accept="image/*" onchange={setThumbnail}/></td>
+                    <td><input type="file" name="fileName" accept="image/*" onChange={setThumbnail}/></td>
                 </tr>
             </tbody>
             </table>
