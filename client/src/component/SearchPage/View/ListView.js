@@ -10,9 +10,12 @@ const contentBoxStyle = styled.div`
   }
 `;
 const ContentBoxStyle = {
+  display: "flex",
   border: "1px solid gray",
-  height: "30px",
+  height: "auto",
   float: "none",
+  padding: "3px",
+  justifyContent: "space-between",
   //margin : '0 auto'
 };
 function ContentBox({ content }) {
@@ -20,9 +23,17 @@ function ContentBox({ content }) {
   //
   return (
     <div style={ContentBoxStyle} className="col-sm-11 col-md-8 contentBox">
-      <p>
-      {content.이름} {content.주소} {content.대표음식} {content.간단한설명}{content.태그}
-      </p>
+      <table
+        style={{ textAlign: `left`, height: `auto`, wordBreak: `break-all` }}
+      >
+        <tr>
+          <td width="190px">{content.이름}</td>
+          <td width="100px">{content.주소}</td>
+          <td width="100px">{content.대표음식}</td>
+          <td width="500px">{content.간단한설명}</td>
+          <td width="150px">{content.태그}</td>
+        </tr>
+      </table>
     </div>
   );
 }
@@ -32,7 +43,25 @@ function ListView(props) {
 
   return (
     <div className={"row justify-content-center"}>
-      <div style={ContentBoxStyle} className="col-sm-11 col-md-8 contentBox"><p>음식점이름 주소 메인메뉴</p></div>
+      <div style={ContentBoxStyle} className="col-sm-11 col-md-8 contentBox">
+        <tr style={{ textAlign: `left` }}>
+          <td width="190px">
+            <b>식당 이름</b>
+          </td>
+          <td width="100px">
+            <b>위치</b>
+          </td>
+          <td width="100px">
+            <b>대표 메뉴</b>
+          </td>
+          <td width="500px">
+            <b>설명</b>
+          </td>
+          <td width="150px">
+            <b>태그</b>
+          </td>
+        </tr>
+      </div>
       {contents.map((content) => (
         <ContentBox content={content} key={content.id} />
       ))}

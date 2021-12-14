@@ -30,13 +30,13 @@ const FilterBox = styled.div`
     width: 50%;
     position: fixed;
     background: white;
-    border-radius:15px;
+    border-radius: 15px;
     top: 25%;
     left: 25%;
     z-index: 1;
   }
   .filterTitle {
-    padding:15px 0;
+    padding: 15px 0;
     border-bottom: 2px solid red;
   }
   .offbtn {
@@ -122,11 +122,10 @@ function FilterBtns({ filter }) {
   );
 }
 function FilterBoxTool(props) {
-  const {restaurants} = props;  
+  const { restaurants } = props;
   return (
     <FilterBox>
       <div className="filterBox">
-        
         <p className="filterTitle">필터 설정</p>
         <p>취향 필터</p>
         {preference.map((filter) => (
@@ -140,7 +139,7 @@ function FilterBoxTool(props) {
         ))}
         <br />
         <br />{" "}
-        <button id={"closeBtn"} onClick={()=>closefilter(restaurants)}>
+        <button id={"closeBtn"} onClick={() => closefilter(restaurants)}>
           Check
         </button>
         <br />
@@ -163,25 +162,7 @@ const closefilter = (props) => {
   }
   const filterlook = document.getElementById("filterLook");
   filterlook.innerText = checkFilter;
-  
-  // if(checkFilter.length!==0){
-  //   props.map((content) => {
-  //     for(var i in checkFilter){
-  //       if(content.태그!=undefined){
-  //         if(content.태그.includes(checkFilter[i])){
-  //           if(!isTagData.includes(content)){
-  //             isTagData.push(content);
-  //           }              
-  //         }
-  //       }
-  //     }
-  //   })
-  // }else{
-  //   props.map((content) => {
-  //     isTagData.push(content);
-  //   })
-  // }  
-  };
+};
 const openfilter = () => {
   const filterbox = document.getElementById("filterTotalBox");
   filterbox.style.display = "block";
@@ -191,20 +172,20 @@ const openfilter = () => {
 let checkFilter = [];
 let isTagData = [];
 function SearchForm(props) {
-  useEffect(()=> {
-    const box = document.getElementById('filterTotalBox');
-    const checkFilterText = document.getElementById('filterLook');
-    let filterText ='';
-    if(checkFilter.length !== 0){
+  useEffect(() => {
+    const box = document.getElementById("filterTotalBox");
+    const checkFilterText = document.getElementById("filterLook");
+    let filterText = "";
+    if (checkFilter.length !== 0) {
       box.style.display = "none";
       checkFilter.map((f) => {
-        filterText += f + ',';
-      })
+        filterText += f + ",";
+      });
     }
     checkFilterText.innerText = filterText;
     //searchData();
-  },[]);
-  const {restaurants} = props;  
+  }, []);
+  const { restaurants } = props;
   const dataInput = useRef();
   const [data, setData] = useState({
     View: "map",
@@ -215,38 +196,38 @@ function SearchForm(props) {
     const dataInfo = dataInput.current;
     resultData = [];
     isTagData = [];
-    if(checkFilter.length!==0){
+    if (checkFilter.length !== 0) {
       restaurants.map((content) => {
-        for(var i in checkFilter){
-          if(content.태그!=undefined){
-            if(content.태그.includes(checkFilter[i])){
-              if(!isTagData.includes(content)){
+        for (var i in checkFilter) {
+          if (content.태그 != undefined) {
+            if (content.태그.includes(checkFilter[i])) {
+              if (!isTagData.includes(content)) {
                 isTagData.push(content);
-              }              
+              }
             }
           }
         }
-      })
-    }else{
+      });
+    } else {
       restaurants.map((content) => {
         isTagData.push(content);
-      })
+      });
     }
     console.log(isTagData);
     isTagData.map((content) => {
-      if (content.이름.includes(dataInfo.value)||
-          content.주소.includes(dataInfo.value)||
-          content.대표음식.includes(dataInfo.value)||
-          content.간단한설명.includes(dataInfo.value)
-      //dataInfo.value == content.name ||
-      //dataInfo.value == content.adress ||
-      //dataInfo.value == content.mainmenu
+      if (
+        content.이름.includes(dataInfo.value) ||
+        content.주소.includes(dataInfo.value) ||
+        content.대표음식.includes(dataInfo.value) ||
+        content.간단한설명.includes(dataInfo.value)
+        //dataInfo.value == content.name ||
+        //dataInfo.value == content.adress ||
+        //dataInfo.value == content.mainmenu
       ) {
         resultData.push(content);
-      } 
-      else if(dataInfo.value==""){
+      } else if (dataInfo.value == "") {
         resultData.push(content);
-      } 
+      }
       // else if (dataInfo.value === ""&&checkFilter.length==0) {
       //   resultData.push(content);
       // }
@@ -306,7 +287,7 @@ function SearchForm(props) {
 
       <div id="filterTotalBox">
         <center>
-          <FilterBoxTool restaurants={restaurants}/>
+          <FilterBoxTool restaurants={restaurants} />
         </center>
       </div>
     </>

@@ -14,6 +14,7 @@ const GridViewStyle = styled.div`
 `;
 const ContentBoxStyle = {
   border: "1px solid gray",
+  borderRadius: "5%",
   width: "250px",
   height: "250px",
   margin: "25px",
@@ -25,10 +26,30 @@ function ContentBox({ content }) {
   return (
     <div style={ContentBoxStyle}>
       <p>{content.img}</p>
-      <p>{content.이름}</p>
-      <p>{content.주소}</p>
-      <p>{content.대표음식}</p>
-      <p>{content.간단한설명}</p>
+      <h5>
+        <b>{content.이름}</b>
+      </h5>
+      <hr />
+      <p style={{ textAlign: `left`, fontSize: `13px`, marginLeft: `115px` }}>
+        &emsp;&emsp;위치 | {content.주소}
+      </p>
+      <p
+        style={{
+          textAlign: `left`,
+          fontSize: `13px`,
+          marginTop: `-15px`,
+          marginLeft: `115px`,
+        }}
+      >
+        &nbsp;대표메뉴 | {content.대표음식}
+      </p>
+      <br />
+      <p style={{ textAlign: `left  `, fontSize: `14px`, marginLeft: `4px` }}>
+        {content.간단한설명}
+      </p>
+      <p style={{ textAlign: `right`, fontSize: `14px` }}>
+        #{content.태그.replace(",", " #")}
+      </p>
     </div>
   );
 }
