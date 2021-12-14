@@ -3,10 +3,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
-const port = process.env.PORT || 5000;
-
-app.use(bodyParser.urlencoded({ limit: "1mb", extended: false }));
-app.use(bodyParser.json({ limit: "1mb" }));
+const port = process.env.PORT || 443;
+// limit: "1mb", extended: false
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({}));
 
 const Restaurant = require("./models/Restaurant");
 const Review = require("./models/Review");

@@ -69,7 +69,7 @@ function ReviewView(props) {
     } catch (e) {
       console.log(e.message);
     }
-  }, []);
+  });
   const { title } = props; //const {title} = props;
   const naverUrl =
     "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=";
