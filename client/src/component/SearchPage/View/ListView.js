@@ -28,6 +28,9 @@ const categoryStyle = {
   justifyContent: "space-between",
 };
 
+const naverUrl =
+  "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=";
+
 function ContentBox({ content }) {
   //console.log(content);
   //
@@ -37,7 +40,15 @@ function ContentBox({ content }) {
         style={{ textAlign: `left`, height: `auto`, wordBreak: `break-all` }}
       >
         <tr>
-          <td width="190px">{content.이름}</td>
+          <td width="190px">
+            <a
+              href={naverUrl + `${content.이름}`}
+              target="_blank"
+              style={{ color: `black`, textDecoration: `none` }}
+            >
+              <b>{content.이름}</b>
+            </a>
+          </td>
           <td width="100px">{content.주소}</td>
           <td width="100px">{content.대표음식}</td>
           <td width="500px">{content.간단한설명}</td>

@@ -234,7 +234,7 @@ function SearchForm(props) {
     isTagData = [];
     if (checkFilter.length !== 0) {
       restaurants.map((content) => {
-        for (var i in checkFilter) {
+        for (let i in checkFilter) {
           if (content.태그 != undefined) {
             if (content.태그.includes(checkFilter[i])) {
               if (!isTagData.includes(content)) {
@@ -313,7 +313,6 @@ function SearchForm(props) {
         <span>고른 태그: </span>
         <span id="filterLook"></span>
       </div>
-      <br />
       <div className={"ViewBtnContainer"} style={{ textAlign: `center` }}>
         <ViewBtn>
           <input
@@ -339,7 +338,6 @@ function SearchForm(props) {
           />
         </ViewBtn>
       </div>
-
       {data.View === "grid" ? (
         <GridView contents={data.result} Data={data.ResultWord} />
       ) : data.View === "list" ? (
@@ -347,7 +345,6 @@ function SearchForm(props) {
       ) : (
         <MapView contents={data.result} Data={data.ResultWord} />
       )}
-
       <div id="filterTotalBox">
         <center>
           <FilterBoxTool restaurants={restaurants} />

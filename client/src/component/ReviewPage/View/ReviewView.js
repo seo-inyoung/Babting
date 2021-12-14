@@ -64,7 +64,6 @@ function ReviewView(props) {
     try {
       const review = await axios.get("/review");
       role = review.data;
-      console.log(role);
       setReviews(role);
     } catch (e) {
       console.log(e.message);

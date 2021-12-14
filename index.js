@@ -5,8 +5,8 @@ const bodyParser = require("body-parser");
 
 const port = process.env.PORT || 443;
 // limit: "1mb", extended: false
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({}));
+app.use(bodyParser.urlencoded({ limit: "1mb", extended: false }));
+app.use(bodyParser.json({ limit: "1mb" }));
 
 const Restaurant = require("./models/Restaurant");
 const Review = require("./models/Review");
@@ -58,11 +58,9 @@ mongoose
 // //   .then(() => console.log("MongoDB Connected..."))
 // //   .catch((err) => console.log(err));
 
-// // var Schema = mongoose.Schema;
-
 // // //데이터 형태는 {date, title, imgLIst, content}
 
-// // var restaurantSchema = new Schema({
+// // const restaurantSchema = new Schema({
 // //   _id: { type: ObjectId },
 // //   name: { type: String },
 // //   adress: { type: String },
@@ -72,7 +70,7 @@ mongoose
 // // });
 
 // // //위와 같은 모델로 쓰기위해 변수 생성
-// // var restaurant = mongoose.model("data", restaurantSchema, "restaurant");
+// // const restaurant = mongoose.model("data", restaurantSchema, "restaurant");
 
 // // console.log(restaurant);
 // //다이어리 데이터 모델에 기반하여 저장된 전체 데이터를 불러옴->항목별 보기

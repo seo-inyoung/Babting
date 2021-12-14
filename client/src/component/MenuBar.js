@@ -4,6 +4,8 @@ import SearchTotal from "./SearchPage/SearchTotal";
 import ReviewTotal from "./ReviewPage/ReviewTotal";
 import styles from "../css/MenuBar.css"; //안됨
 import styled from "styled-components"; //css할수있도록
+import imgfile from "./img/logo2.png";
+
 //const 이름 = styled.div ''; 형식
 
 const Logo = styled.div`
@@ -53,7 +55,7 @@ function MenuBar(props) {
     <>
       <div className="row" style={MenuContainer}>
         <Logo>
-          <span>logo</span>
+          <img src={imgfile} style={{ height: `50px` }}></img>
         </Logo>
         <div className="MenuBar">
           <br />
