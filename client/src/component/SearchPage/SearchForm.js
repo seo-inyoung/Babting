@@ -31,19 +31,36 @@ const FilterBox = styled.div`
     position: fixed;
     background: white;
     border-radius: 15px;
+    border: 2px solid black;
     top: 25%;
     left: 25%;
     z-index: 1;
   }
   .filterTitle {
     padding: 15px 0;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #f4bf5a;
   }
   .offbtn {
+    margin: 5px;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 5px 10px;
     background: white;
   }
   .onbtn {
-    background: gray;
+    margin: 5px;
+    border-radius: 15px;
+    border: none;
+    padding: 5px 10px;
+    background: #f4bf5a;
+  }
+  .submit {
+    width: 20%;
+    padding: 10px;
+    background: #f4bf5a;
+    border: none;
+    border-radius: 15px;
+    font: 16px underline;
   }
   @media screen and (max-width: 958px) {
     .filterBox {
@@ -103,7 +120,7 @@ function FilterBtns({ filter }) {
       FilterList = { ...FilterList, [btn.id]: 1 };
       //console.log(FilterList);
       btn.className = "onbtn";
-      //btn.style.background = "gray";
+      // btn.style.background = "gray";
     } else {
       FilterList = { ...FilterList, [btn.id]: 0 };
       //console.log(FilterList);
@@ -126,21 +143,40 @@ function FilterBoxTool(props) {
   return (
     <FilterBox>
       <div className="filterBox">
-        <p className="filterTitle">필터 설정</p>
-        <p>취향 필터</p>
+        <p
+          style={{
+            fontSize: `25px`,
+            backgroundColor: `#f4bf5a`,
+            borderTopLeftRadius: `15px`,
+            borderTopRightRadius: `15px`,
+          }}
+          className="filterTitle"
+        >
+          <b>필터 설정</b>
+        </p>
+        <p style={{ fontSize: `17px` }}>
+          <b>취향 필터</b>
+        </p>
         {preference.map((filter) => (
           <FilterBtns filter={filter} />
         ))}
         <br />
-        <br />
-        <p>상황 필터</p>
+        <hr />
+        <p style={{ fontSize: `17px` }}>
+          <b>상황 필터</b>
+        </p>
         {situation.map((filter) => (
           <FilterBtns filter={filter} />
         ))}
         <br />
+        <hr />
         <br />{" "}
-        <button id={"closeBtn"} onClick={() => closefilter(restaurants)}>
-          Check
+        <button
+          id={"closeBtn"}
+          className="submit"
+          onClick={() => closefilter(restaurants)}
+        >
+          확인
         </button>
         <br />
         <br />
@@ -243,40 +279,67 @@ function SearchForm(props) {
             className={"col-md-4 col-xs-5"}
             placeholder="음식점 이름/먹고 싶은 메뉴를 입력해 보세요"
           />
-          <button className={"col-md-1 col-xs-2"} onClick={searchData}>
+          <button
+            style={{
+              borderRadius: `15px`,
+              padding: `5px`,
+              border: `none`,
+              backgroundColor: `#62AAE2`,
+              color: `white`,
+              marginLeft: `5px`,
+            }}
+            className={"col-md-1 col-xs-2"}
+            onClick={searchData}
+          >
             검색{" "}
           </button>
-          <button className={"col-md-1 col-xs-2"} onClick={openfilter}>
+          <button
+            style={{
+              borderRadius: `15px`,
+              padding: `5px`,
+              border: `none`,
+              backgroundColor: `#f4bf5a`,
+              marginLeft: `5px`,
+            }}
+            className={"col-md-1 col-xs-2"}
+            onClick={openfilter}
+          >
             필터{" "}
           </button>
         </div>{" "}
       </FilterBtn>
-      <div className={"ViewBtnContainer"}>
+      <br />
+      <div>
+        <span>고른 태그: </span>
+        <span id="filterLook"></span>
+      </div>
+      <br />
+      <div className={"ViewBtnContainer"} style={{ textAlign: `center` }}>
         <ViewBtn>
           <input
             type={"image"}
             src={MapIcon}
             className={"col-md-1 col-xs-1"}
+            style={{ width: `30px`, marginLeft: `10x` }}
             onClick={() => setData({ ...data, View: "map" })}
           />
           <input
             type={"image"}
             src={ListIcon}
             className={"col-md-1 col-xs-1"}
+            style={{ width: `30px`, marginLeft: `10px` }}
             onClick={() => setData({ ...data, View: "list" })}
           />
           <input
             type={"image"}
             src={GridIcon}
             className={"col-md-1 col-xs-1"}
+            style={{ width: `30px`, marginLeft: `10px` }}
             onClick={() => setData({ ...data, View: "grid" })}
           />
         </ViewBtn>
       </div>
-      <div>
-        <span>고른 태그: </span>
-        <span id="filterLook"></span>
-      </div>
+
       {data.View === "grid" ? (
         <GridView contents={data.result} Data={data.ResultWord} />
       ) : data.View === "list" ? (

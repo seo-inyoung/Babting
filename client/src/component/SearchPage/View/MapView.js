@@ -46,9 +46,9 @@ function Map({ contents }) {
         position: new window.kakao.maps.LatLng(item.위도, item.경도),
       });
       // allContent 변수를 선언해서 markerdata의 title,tag를 받아옴 맞나? ㅋㅋㅋㅋㅋ
-      var allContent = `<div><center><br/>${item.이름}<br/>${item.주소}<br/>${item.대표음식}</center></div>`;
+      let allContent = `<div style="text-align:right"><b>${item.이름}</b><br/>${item.주소}<br/>${item.대표음식}</div>`;
       // infowindow 선언 content:allContent로 다 띄울 수 있을 듯?
-      var infowindow = new window.kakao.maps.InfoWindow({
+      let infowindow = new window.kakao.maps.InfoWindow({
         content: allContent,
       });
 

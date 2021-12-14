@@ -40,7 +40,7 @@ function ContentBox({ review }) {
     <div style={ContentBoxStyle}>
       <br />
       <p style={{ textAlign: `center` }}>
-        <img width="150px" src={review.이미지} />
+        <img height="150px" src={review.이미지} />
       </p>
       <h4>" {review.제목} "</h4>
       <p style={{ textAlign: `right` }}>식당 : {review.식당이름} </p>
@@ -69,7 +69,7 @@ function ReviewView(props) {
     } catch (e) {
       console.log(e.message);
     }
-  });
+  }, []);
   const { title } = props; //const {title} = props;
   const naverUrl =
     "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=";

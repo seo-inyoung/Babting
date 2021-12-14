@@ -18,6 +18,16 @@ const ContentBoxStyle = {
   justifyContent: "space-between",
   //margin : '0 auto'
 };
+const categoryStyle = {
+  display: "flex",
+  border: "1px solid gray",
+  height: "auto",
+  float: "none",
+  padding: "3px",
+  background: "#f4bf5a",
+  justifyContent: "space-between",
+};
+
 function ContentBox({ content }) {
   //console.log(content);
   //
@@ -43,18 +53,18 @@ function ListView(props) {
 
   return (
     <div className={"row justify-content-center"}>
-      <div style={ContentBoxStyle} className="col-sm-11 col-md-8 contentBox">
+      <div style={categoryStyle} className="col-sm-11 col-md-8 contentBox">
         <tr style={{ textAlign: `left` }}>
-          <td width="190px">
+          <td className="title" width="190px">
             <b>식당 이름</b>
           </td>
-          <td width="100px">
+          <td className="title" width="100px">
             <b>위치</b>
           </td>
-          <td width="100px">
+          <td className="title" width="100px">
             <b>대표 메뉴</b>
           </td>
-          <td width="500px">
+          <td className="title" width="500px">
             <b>설명</b>
           </td>
           <td width="150px">
